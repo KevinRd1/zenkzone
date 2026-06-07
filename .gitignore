@@ -1,0 +1,29 @@
+# Dependencias
+node_modules/
+backend/node_modules/
+
+# Variables privadas
+.env
+backend/.env
+*.env
+
+# Base de datos / backups
+*.backup
+*.dump
+*.sql.backup
+backend/backups/
+backups/
+
+# Logs
+logs/
+backend/logs/
+*.log
+
+# Editores
+.vscode/
+.idea/
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini

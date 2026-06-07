@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es" id="html-root">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZENKZONE 👾 — Free Fire</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- CSS en subcarpeta estilo/ -->
+  <link rel="stylesheet" href="estilo/styles.css" />
+</head>
+<body>
+<div id="zk-root">
+
+  <!-- NAVEGACIÓN -->
+  <nav id="main-nav" class="nav" role="navigation" aria-label="Menú principal"></nav>
+
+  <!-- TOAST (notificaciones) -->
+  <div id="toast-container" aria-live="polite"></div>
+
+  <!-- SELECTOR DE REGIÓN (primer acceso) -->
+  <div id="region-picker" class="fullscreen-modal" role="dialog" aria-modal="true">
+    <div class="region-picker-inner">
+      <div class="logo-big">ZENK<span class="logo-accent">ZONE</span> <span class="logo-icon">👾</span></div>
+      <div class="logo-tagline">FREE FIRE HUB</div>
+      <div class="region-picker-title">¿CUÁL ES TU REGIÓN?</div>
+      <div class="region-picker-sub">Select your region for personalized content</div>
+      <div class="region-buttons">
+        <button class="region-btn"            data-region="LATAM">🌎 LATAM</button>
+        <button class="region-btn region-btn--usa"   data-region="EEUU">🇺🇸 EEUU</button>
+        <button class="region-btn region-btn--other" data-region="OTRO">🌍 OTRO / OTHER</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL GENÉRICO -->
+  <div id="modal-overlay" class="modal-overlay hidden" role="dialog" aria-modal="true">
+    <div id="modal-box" class="modal" tabindex="-1"></div>
+  </div>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main id="app-root" role="main"></main>
+
+  <!-- FOOTER -->
+  <footer id="main-footer" class="footer" role="contentinfo"></footer>
+
+</div>
+
+<!-- JS en subcarpeta logica/ -->
+<script src="logica/app.js"></script>
+</body>
+</html>
