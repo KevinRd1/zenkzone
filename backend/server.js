@@ -21,6 +21,7 @@ const nodemailer= require('nodemailer');
 const winston   = require('winston');
 
 const app  = express();
+app.set('trust proxy', 1);
 const PORT = process.env.PORT || 3000;
 
 // ─────────────────────────────────────────────────────────────
@@ -186,6 +187,26 @@ async function hacerBackup() {
 // 6. CORREO
 // ─────────────────────────────────────────────────────────────
 async function enviarCorreo(to, subject, html) {
+  // En producción Render: usar Resend API
+  if (process.env.RESEND_API_KEY) {
+    try {
+      const resend = new Resend(process.env.RESEND_API_KEY);
+
+      await resend.emails.send({
+        from: process.env.RESEND_FROM || 'ZENKZONE <onboarding@resend.dev>',
+        to,
+        subject,
+        html
+      });
+
+      return true;
+    } catch (err) {
+      logger.error('Error correo Resend: ' + err.message);
+      return false;
+    }
+  }
+
+  // Localhost: seguir usando Gmail SMTP
   const mailHost = (process.env.MAIL_HOST || 'smtp.gmail.com').trim();
   const mailPort = Number(process.env.MAIL_PORT || 587);
   const mailUser = (process.env.MAIL_USER || '').trim();
